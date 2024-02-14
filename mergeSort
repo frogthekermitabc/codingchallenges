@@ -1,0 +1,47 @@
+Write a function mergeSort which gets two sorted lists as an input and merges them into one sorted list and returns it.
+
+For Example,
+
+Input:
+
+[1, 4, 6, 8, 14, 23]
+
+[2, 3, 5, 7, 11, 18, 19, 20]
+
+Expected Output:
+
+[1, 2, 3, 4, 5, 6, 7, 8, 11, 14, 18, 19, 20, 23]
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// A function that merges two sorted lists into one sorted list
+function mergeSort(list1, list2) {
+  // Initialize an empty array to store the merged list
+  let merged = [];
+  // Initialize two pointers to track the indices of the lists
+  let i = 0; // pointer for list1
+  let j = 0; // pointer for list2
+  // Loop until one of the pointers reaches the end of its list
+  while (i < list1.length && j < list2.length) {
+    // Compare the current elements of the lists and push the smaller one to the merged array
+    if (list1[i] < list2[j]) {
+      merged.push(list1[i]);
+      i++; // increment the pointer for list1
+    } else {
+      merged.push(list2[j]);
+      j++; // increment the pointer for list2
+    }
+  }
+  // If there are any remaining elements in list1, append them to the merged array
+  while (i < list1.length) {
+    merged.push(list1[i]);
+    i++;
+  }
+  // If there are any remaining elements in list2, append them to the merged array
+  while (j < list2.length) {
+    merged.push(list2[j]);
+    j++;
+  }
+  // Return the merged array
+  return merged;
+}
